@@ -29,6 +29,7 @@ void systemSetUp(){
     Wire1.setClock(I2C_CLOCK);
 
     // BLE33 LED's 
+    
     pinMode(LEDR, OUTPUT);
     pinMode(LEDG, OUTPUT);
     pinMode(LEDB, OUTPUT);
@@ -48,6 +49,7 @@ void systemSetUp(){
     digitalWrite(LEDR, HIGH);         // will turn the LED off
 
     // PADL-33 LED's
+    /*
     YELLOW_LED.begin();
     GREEN_LED.begin();
     BLUE_LED.begin();
@@ -70,6 +72,7 @@ void systemSetUp(){
     BLUE_LED.off();
     delay(100);
     YELLOW_LED.off();
+    */
     
     pinMode(HEATER_PIN,OUTPUT);
 
@@ -89,7 +92,7 @@ void systemSetUp(){
     delay(2000);
     if (!sdActive || !sdStatus) {
         digitalWrite(LEDR, LOW);       // will turn the LED on
-        RED_LED.on();
+        // RED_LED.on();
         //if (usingBuzzer) tone(TONE_PIN, 400);
     }
     else greenLedCounter++;
@@ -128,11 +131,11 @@ void systemSetUp(){
 
     Serial.print("Green LED Count = ");
     Serial.println(greenLedCounter);
-    if (greenLedCounter >= 7){
-        GREEN_LED.on();
+    if (greenLedCounter >= 8){
+        // GREEN_LED.on();
         Serial.println("All Systems GO!");
         delay(500);
-        GREEN_LED.off();
+        // GREEN_LED.off();
     }
 
     SD.chdir("/" + directory);
@@ -165,7 +168,7 @@ void systemSetUp(){
 }
 
 void systemUpdate(){
-    YELLOW_LED.on();
+    // YELLOW_LED.on();
 
     timerSec = timer/1000.0;
 
@@ -209,7 +212,7 @@ void systemUpdate(){
     imuUpdate();
     timer4 = millis() - timer4; /////////////////////////
 
-    YELLOW_LED.off();
+    // YELLOW_LED.off();
 
     //////////////////////////////////////////// UPDATE SERIAL MONITOR ////////////////////////////////////////////
     timer7 = millis(); ///////////// Timer 5 Start ///////////// 

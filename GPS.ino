@@ -24,7 +24,7 @@ void gpsSetUp(){
             OLED.update("GPS\nOffline...");
             //if (usingBuzzer) tone(TONE_PIN, 400);
             digitalWrite(LEDR, LOW);       // will turn the LED on
-            RED_LED.on();
+            // RED_LED.on();
         }
         delay(20);
     }
@@ -95,8 +95,10 @@ void gpsUpdate(){
         
         SIV = sparkFunGNSS.getSIV();
 
+        /*
         if (SIV > 0) BLUE_LED.on();
         else BLUE_LED.off();
+        */
 
         gpsMonth = sparkFunGNSS.getMonth();
         gpsDay = sparkFunGNSS.getDay();
@@ -152,7 +154,7 @@ void gpsUpdate(){
     Serial.println(PVTcounter);
 
     if (PVTcounter >= 5) {
-        RED_LED.on();
+        // RED_LED.on();
         digitalWrite(LEDR, LOW);       // will turn the LED on
         //if (gpsStatus == 8) sparkFunGNSS.begin(UBLOX_SERIAL);
     }

@@ -13,10 +13,13 @@
 #define CHIP_SELECT 10 //Should highlight if you have teensy 3.5/3.6/4.0/4.1 selected
 #define HEATER_PIN 8
 #define TONE_PIN 6
+// We don't use these LEDs, so we'd rather have the ports open for the MUX
+/*
 #define YELLOW_LED_PIN 2 // Data Update LED
 #define GREEN_LED_PIN 3
 #define BLUE_LED_PIN 4 // Satellites is greater than 0 - GPS is Locked
 #define RED_LED_PIN 5
+*/
 #define UBLOX_SERIAL Serial1
 
 #define GPS_FREQUENCY 1
@@ -26,19 +29,21 @@
 
 // TODO: Actually figure out which pin we want to use
 #define COLOR_THERMISTOR_PIN A0
-#define MUX_PIN_0 D7
-// #define MUX_PIN_1 3
-// #define MUX_PIN_2 4
-// #define MUX_PIN_3 5
+#define MUX_PIN_0 D2
+// #define MUX_PIN_1 D3
+// #define MUX_PIN_2 D4
+// #define MUX_PIN_3 D5
 
 int muxID = 0;
 // TODO: Update this when we get more thermistors
 int numColorThermistors = 2;
 
+/*
 LED YELLOW_LED(YELLOW_LED_PIN);
 LED GREEN_LED(GREEN_LED_PIN);
 LED BLUE_LED(BLUE_LED_PIN);
 LED RED_LED(RED_LED_PIN);
+*/
 
 byte greenLedCounter = 0;
 

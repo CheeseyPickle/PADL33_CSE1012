@@ -45,7 +45,7 @@ void pressureSensorSetUp(){
             OLED.update("Pressure\nSensor\nOffline...");
             //if (usingBuzzer) tone(TONE_PIN, 400);
             digitalWrite(LEDR, LOW);       // will turn the LED on
-            RED_LED.on();
+            // RED_LED.on();
         }
         delay(20);
     }
@@ -93,7 +93,7 @@ void pressureSensorUpdate(){
         if (pressureSensorStatus[0] == pressureSensorStatus[1] && pressureSensorStatus[1] == pressureSensorStatus[2] && pressureSensorStatus[2] == pressureSensorStatus[3] && 
             pressureSensorStatus[3] == pressureSensorStatus[4] && pressureSensorStatus[4] == pressureSensorStatus[5] && pressureSensorStatus[5] == pressureSensorStatus[0])  {
             //if (usingBuzzer) tone(TONE_PIN, 400);
-            RED_LED.on();
+            // RED_LED.on();
             digitalWrite(LEDR, LOW);       // will turn the LED on
             Serial.println("BARO ERROR!");
         }
@@ -147,7 +147,7 @@ void imuSetUp(){
             OLED.update("Accel &\nGyro\nOffline...");
             //if (usingBuzzer) tone(TONE_PIN, 400);
             digitalWrite(LEDR, LOW);       // will turn the LED on
-            RED_LED.on();
+            // RED_LED.on();
         }
         delay(20);
     }
@@ -238,7 +238,7 @@ void imuSetUp(){
             
             //if (usingBuzzer) tone(TONE_PIN, 400);
             digitalWrite(LEDR, LOW);       // will turn the LED on
-            RED_LED.on();
+            // RED_LED.on();
         }
         delay(20);
     }
