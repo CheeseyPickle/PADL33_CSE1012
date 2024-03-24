@@ -73,6 +73,9 @@ void systemSetUp(){
     
     pinMode(HEATER_PIN,OUTPUT);
 
+    // MUX Setup. (Not sure where else to put this?)
+    pinMode(MUX_PIN_0, OUTPUT);
+
     delay(20);
     //delay(100);
 
@@ -106,6 +109,13 @@ void systemSetUp(){
     Serial.println(_print);
     OLED.update(_print);
     if (ThermistorExt.getStatus()) greenLedCounter++;
+
+    delay(1000);
+
+    _print = (ColorThermistors.begin(10)) ? "Color Thermistors Online!" : "Color Thermistors Offline...";
+    Serial.println(_print);
+    OLED.update(_print);
+    if (ColorThermistors.getStatus()) greenLedCounter++;
 
     delay(1000);
 
@@ -182,6 +192,13 @@ void systemUpdate(){
     else photoresistorADCValue = analogRead(EXTERNAL_THERMISTOR_PIN);
     
     if (ThermistorInt.getStatus()) ThermistorInt.update();
+
+    // Because of the way ordering works, we want the muxID to lag by 1 behind the actual status of the MUX
+    // This way, muxID is aligned with the color thermistor measurements
+    muxID = (muxID + 1) % numColorThermistors;
+    if (ColorThermistors.getStatus()) ColorThermistors.update();
+
+    muxUpdate((muxID + 1) % numColorThermistors);
 
     pressureSensorUpdate();
 

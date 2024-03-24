@@ -29,11 +29,14 @@
 // TODO: Initialize new thermistors. Maybe in variables.h?
 
 //////////////////////////////////////////// GLOBAL VARIABLES ////////////////////////////////////////////
-String header = "hh:mm:ss,FltTimer,T(s),T(ms),Hz,T2,T3,T4,T5,T6,totT,extT(F) or ADC,extT(C),intT(F),intT(C),Fix Type,RTK,PVT,Sats,Date,Time,Lat,Lon,Alt(Ft),Alt(M),HorizAcc(MM),VertAcc(MM),VertVel(Fte3/S),VertVel(MM/S),ECEFstat,ECEFX(CM),ECEFY(CM),ECEFZ(CM),NedVelNorth(M/S),NedVelEast(M/S),NedVelDown(M/S),GndSpd(M/S),Head(Deg),PDOP,kPa,ATM,PSI,C,F,Ft,M,VV(Ft),VV(M),G(y),G(x),G(z),Deg/S(x),Deg/S(y),Deg/S(z),uT(x),uT(y),uT(z),";
-// TODO: Update header with our own thermistors
-header += "";
+String header = "hh:mm:ss,FltTimer,T(s),T(ms),Hz,T2,T3,T4,T5,T6,totT,extT(F) or ADC,extT(C),intT(F),intT(C),Fix Type,RTK,PVT,Sats,Date,Time,Lat,Lon,Alt(Ft),Alt(M),HorizAcc(MM),VertAcc(MM),VertVel(Fte3/S),VertVel(MM/S),ECEFstat,ECEFX(CM),ECEFY(CM),ECEFZ(CM),NedVelNorth(M/S),NedVelEast(M/S),NedVelDown(M/S),GndSpd(M/S),Head(Deg),PDOP,kPa,ATM,PSI,C,F,Ft,M,VV(Ft),VV(M),G(y),G(x),G(z),Deg/S(x),Deg/S(y),Deg/S(z),uT(x),uT(y),uT(z),"
 
-header += String(Version);
+// CTid = Color thermistor id. Which one is being measured.
+// CTTemp = Color Thermistor temp. The temperature we measure on the thermistor.
+// TODO: Potentially split each thermistor into its own columns?
++String("CTid,CTTemp(F),CTTemp(C),")
+
++String(Version);
 
 // float myVariable = 0; // Example
 
@@ -222,8 +225,14 @@ void updateData(){
     data += magData.y;
     data += ",";
     data += magData.z;
+    data += ",";
 
-    // TODO: Log Data from thermistors
+    // TODO: Implement MUX Stuff
+    data += muxID; // CTid
+    data += ",";
+    data += ColorThermistors.getTempF(); // CTTemp(F)
+    data += ",";
+    data += ColorThermistors.getTempC(); // CTTemp(C)
 
     data += "\n";
     Serial.print(data);

@@ -24,6 +24,17 @@
 #define DATA_DELAY 1000
 #define OK(ok) (ok ? F("  ->  OK") : F("  ->  ERROR!")) // Convert uint8_t into OK/ERROR
 
+// TODO: Actually figure out which pin we want to use
+#define COLOR_THERMISTOR_PIN A0
+#define MUX_PIN_0 D7
+// #define MUX_PIN_1 3
+// #define MUX_PIN_2 4
+// #define MUX_PIN_3 5
+
+int muxID = 0;
+// TODO: Update this when we get more thermistors
+int numColorThermistors = 2;
+
 LED YELLOW_LED(YELLOW_LED_PIN);
 LED GREEN_LED(GREEN_LED_PIN);
 LED BLUE_LED(BLUE_LED_PIN);
@@ -63,6 +74,10 @@ long photoresistorADCValue = 0;
 bool thermExtOrADC = true; // true means you're using an external thermistor
 Thermistor ThermistorExt(EXTERNAL_THERMISTOR_PIN);
 Thermistor ThermistorInt(INTERNAL_THERMISTOR_PIN);
+
+// This is our own thermistor. Technically, it's 8 different ones, but they're all on the same pin
+Thermistor ColorThermistors(COLOR_THERMISTOR_PIN);
+
 
 // SdFs SD;
 // FsFile datalog;

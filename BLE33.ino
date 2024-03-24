@@ -3,6 +3,7 @@
       Created by: Ashton Posey
 ************************************************/
 //Purpose: General functions to run the pressure sensor, 9 dof imu, humidity sensor, & color/distance sensor.
+// Also a function to control a MUX, by Adwin
 
 ////////////////////////////////////// Pressure Sensor Set Up //////////////////////////////////////
 // void pressureSensorSetUp();
@@ -299,4 +300,35 @@ void colorDistanceSensorSetUp(){
 
     //delay(250);
     delay(1000);
+}
+////////////////////////////////////// MUX Code //////////////////////////////////////
+void muxUpdate(int newMuxID) {
+  // Literally just use a binary counter
+  // If we have weird sensor placements, consider an array of IDs instead?
+  if (newMuxID & 1 == 0) {
+    digitalWrite(MUX_PIN_0, LOW);
+  } else {
+    digitalWrite(MUX_PIN_0, HIGH);
+  }
+
+  // More Pin Logic as needed
+  /*
+  if (newMuxID & 2 == 0) {
+    digitalWrite(MUX_PIN_1, LOW);
+  } else {
+    digitalWrite(MUX_PIN_1, HIGH);
+  }
+
+  if (newMuxID & 4 == 0) {
+    digitalWrite(MUX_PIN_2, LOW);
+  } else {
+    digitalWrite(MUX_PIN_2, HIGH);
+  }
+
+  if (newMuxID & 8 == 0) {
+    digitalWrite(MUX_PIN_3, LOW);
+  } else {
+    digitalWrite(MUX_PIN_3, HIGH);
+  }
+  */
 }
