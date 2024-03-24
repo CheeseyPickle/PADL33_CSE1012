@@ -305,7 +305,7 @@ void colorDistanceSensorSetUp(){
 void muxUpdate(int newMuxID) {
   // Literally just use a binary counter
   // If we have weird sensor placements, consider an array of IDs instead?
-  if (newMuxID & 1 == 0) {
+  if (newMuxID % 2 == 0) {
     digitalWrite(MUX_PIN_0, LOW);
   } else {
     digitalWrite(MUX_PIN_0, HIGH);
@@ -313,19 +313,22 @@ void muxUpdate(int newMuxID) {
 
   // More Pin Logic as needed
   /*
-  if (newMuxID & 2 == 0) {
+  newMuxID /= 2;
+  if (newMuxID % 2 == 0) {
     digitalWrite(MUX_PIN_1, LOW);
   } else {
     digitalWrite(MUX_PIN_1, HIGH);
   }
 
-  if (newMuxID & 4 == 0) {
+  newMuxID /= 2;
+  if (newMuxID % 2 == 0) {
     digitalWrite(MUX_PIN_2, LOW);
   } else {
     digitalWrite(MUX_PIN_2, HIGH);
   }
 
-  if (newMuxID & 8 == 0) {
+  newMuxID /= 2;
+  if (newMuxID % 2 == 0) {
     digitalWrite(MUX_PIN_3, LOW);
   } else {
     digitalWrite(MUX_PIN_3, HIGH);
