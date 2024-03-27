@@ -227,7 +227,16 @@ void updateData(){
     data += magData.z;
     data += ",";
 
-    // TODO: Implement MUX Stuff
+    // TODO: Wire everything, figure out where commas go
+    /*
+    for (int i = 0; i < numColorThermistors; i++) {
+      muxUpdate(i);
+      data += ColorThermistors.getTempF(); // CTTemp(F)
+      data += ",";
+      data += ColorThermistors.getTempC();
+      data += ",";
+    }
+    */
     data += muxID; // CTid
     data += ",";
     data += ColorThermistors.getTempF(); // CTTemp(F)
