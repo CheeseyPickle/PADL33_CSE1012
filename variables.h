@@ -83,7 +83,6 @@ Thermistor ThermistorInt(INTERNAL_THERMISTOR_PIN);
 // This is our own thermistor. Technically, it's 8 different ones, but they're all on the same pin
 Thermistor ColorThermistors(COLOR_THERMISTOR_PIN);
 
-
 // SdFs SD;
 // FsFile datalog;
 SdFat SD;
