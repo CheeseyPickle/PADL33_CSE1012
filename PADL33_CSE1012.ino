@@ -237,6 +237,32 @@ void updateData(){
     data += CTMeasurements[3];
     data += ",";
     /*
+    data += CTMeasurements[4]; // "idk"
+    data += ",";
+    data += CTMeasurements[5];
+    data += ",";
+    data += CTMeasurements[6]; // "something"
+    data += ",";
+    data += CTMeasurements[7];
+    data += ",";
+    data += CTMeasurements[8]; // "color"
+    data += ",";
+    data += CTMeasurements[9];
+    data += ",";
+    data += CTMeasurements[10]; // "medium candy apple red"
+    data += ",";
+    data += CTMeasurements[11];
+    data += ",";
+    data += CTMeasurements[12]; // "green"
+    data += ",";
+    data += CTMeasurements[13];
+    data += ",";
+    data += CTMeasurements[14]; // "green but better"
+    data += ",";
+    data += CTMeasurements[15];
+    data += ",";
+    */
+    /*
     data += muxID; // CTid
     data += ",";
     data += ColorThermistors.getTempF(); // CTTemp(F)

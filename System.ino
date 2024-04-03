@@ -201,7 +201,7 @@ void systemUpdate(){
 
     if (ColorThermistors.getStatus()) {
       for (int i = 0; i < numColorThermistors; i++) {
-        muxUpdate(i);
+        muxUpdate(i * 2); // Thermistors are wired to even ports only
         ColorThermistors.update();
         CTMeasurements[2*i] = ColorThermistors.getTempF();
         CTMeasurements[2*i + 1] = ColorThermistors.getTempC();
