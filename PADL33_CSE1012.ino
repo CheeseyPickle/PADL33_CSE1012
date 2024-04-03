@@ -34,7 +34,17 @@ String header = "hh:mm:ss,FltTimer,T(s),T(ms),Hz,T2,T3,T4,T5,T6,totT,extT(F) or 
 // CTid = Color thermistor id. Which one is being measured.
 // CTTemp = Color Thermistor temp. The temperature we measure on the thermistor.
 // TODO: Potentially split each thermistor into its own columns?
-+String("CTid,CTTemp(F),CTTemp(C),")
+// +String("CTid,CTTemp(F),CTTemp(C),")
++String("Black1Temp(F), Black1Temp(C),")
+// +String("Black2Temp(F), Black2Temp(C),")
+/*
++String("Blue1Temp(F), Blue1Temp(C),")
++String("Blue2Temp(F), Blue2Temp(C),")
++String("White1Temp(F), White1Temp(C),")
++String("White2Temp(F), White2Temp(C),")
+*/
++String("Reflect1Temp(F), Reflect1Temp(C),")
+// +String("Reflect2Temp(F), Reflect2Temp(C),")
 
 +String(Version);
 
@@ -217,21 +227,22 @@ void updateData(){
     data += magData.z;
     data += ",";
 
-    // TODO: Wire everything, figure out where commas go
+    // TODO: Wire everything, figure out what's what
+    data += CTMeasurements[0]; // "Black 1"
+    data += ",";
+    data += CTMeasurements[1];
+    data += ",";
+    data += CTMeasurements[2]; // "Clear 1"
+    data += ",";
+    data += CTMeasurements[3];
+    data += ",";
     /*
-    for (int i = 0; i < numColorThermistors; i++) {
-      muxUpdate(i);
-      data += ColorThermistors.getTempF(); // CTTemp(F)
-      data += ",";
-      data += ColorThermistors.getTempC();
-      data += ",";
-    }
-    */
     data += muxID; // CTid
     data += ",";
     data += ColorThermistors.getTempF(); // CTTemp(F)
     data += ",";
     data += ColorThermistors.getTempC(); // CTTemp(C)
+    */
 
     data += "\n";
     Serial.print(data);

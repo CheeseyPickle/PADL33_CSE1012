@@ -78,6 +78,9 @@ void systemSetUp(){
 
     // MUX Setup. (Not sure where else to put this?)
     pinMode(MUX_PIN_0, OUTPUT);
+    pinMode(MUX_PIN_1, OUTPUT);
+    pinMode(MUX_PIN_2, OUTPUT);
+    pinMode(MUX_PIN_3, OUTPUT);
 
     delay(20);
     //delay(100);
@@ -196,12 +199,20 @@ void systemUpdate(){
     
     if (ThermistorInt.getStatus()) ThermistorInt.update();
 
-    // Because of the way ordering works, we want the muxID to lag by 1 behind the actual status of the MUX
-    // This way, muxID is aligned with the color thermistor measurements
+    if (ColorThermistors.getStatus()) {
+      for (int i = 0; i < numColorThermistors; i++) {
+        muxUpdate(i);
+        ColorThermistors.update();
+        CTMeasurements[2*i] = ColorThermistors.getTempF();
+        CTMeasurements[2*i + 1] = ColorThermistors.getTempC();
+      }
+    }
+    /*
     muxID = (muxID + 1) % numColorThermistors;
     if (ColorThermistors.getStatus()) ColorThermistors.update();
 
     muxUpdate((muxID + 1) % numColorThermistors);
+    */
 
     pressureSensorUpdate();
 

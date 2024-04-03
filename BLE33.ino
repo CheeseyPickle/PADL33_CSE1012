@@ -310,9 +310,7 @@ void muxUpdate(int newMuxID) {
   } else {
     digitalWrite(MUX_PIN_0, HIGH);
   }
-
-  // More Pin Logic as needed
-  /*
+  
   newMuxID /= 2;
   if (newMuxID % 2 == 0) {
     digitalWrite(MUX_PIN_1, LOW);
@@ -333,5 +331,4 @@ void muxUpdate(int newMuxID) {
   } else {
     digitalWrite(MUX_PIN_3, HIGH);
   }
-  */
 }

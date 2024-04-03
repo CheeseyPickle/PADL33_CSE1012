@@ -29,14 +29,15 @@
 
 // TODO: Actually figure out which pin we want to use
 #define COLOR_THERMISTOR_PIN A0
-#define MUX_PIN_0 D2
-// #define MUX_PIN_1 D3
-// #define MUX_PIN_2 D4
-// #define MUX_PIN_3 D5
+#define MUX_PIN_0 D5
+#define MUX_PIN_1 D4
+#define MUX_PIN_2 D3
+#define MUX_PIN_3 D2
 
-int muxID = 0;
+// int muxID = 0;
 // TODO: Update this when we get more thermistors
-int numColorThermistors = 2;
+const int numColorThermistors = 2;
+float CTMeasurements[2*numColorThermistors];
 
 /*
 LED YELLOW_LED(YELLOW_LED_PIN);
